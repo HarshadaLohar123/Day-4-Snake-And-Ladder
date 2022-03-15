@@ -95,14 +95,65 @@ namespace SnakeAndLadder
             }
             Console.WriteLine("Player wins" + count);
         }
+        public static void UC_5_ExactWinningPosition()
+        {
+            int ladder = 1, ldice = 0;
+            int snake = 2, sdice;
+            int win = 100;
+            int count = 0, a = 0;
+            Console.WriteLine("Welcome to UC_5");
+            while (count != win)
+            {
+                if (count >= 0 && count < 100)
+                {
+                    Random random = new Random();
+                    int randomCheck = random.Next(3);
 
+                    switch (randomCheck)
+                    {
+                        case 1:
+                            {
+                                Console.WriteLine("Got Ladder");
+                                Random rnd = new Random();
+                                ldice = rnd.Next(1, 7);
+                                count = count + ldice;
+                                a = count;
+                                break;
+                            }
+                        case 2:
+                            {
+                                Random sran = new Random();
+                                sdice = sran.Next(1, 7);
+                                count = count - sdice;
+                                Console.WriteLine("Got snake");
+                                break;
+                            }
+                        default:
+                            {
+                                Console.WriteLine("No play");
+                                break;
+                            }
+                    }
+                }
+                else if (a > 100)
+                {
+                    count = a - ldice;
+                }
+                else
+                {
+                    count = 0;
+                }
 
+            }
+            Console.WriteLine("Player wins" + count);
+        }
         static void Main(string[] args)
         {
             SnakeAndLadder.Uc_1_SinglePlayer();
             SnakeAndLadder.UC_2_PlayerRollDie();
             SnakeAndLadder.UC_3_PlayGame();
             SnakeAndLadder.UC_4_PlayerReachesWinningPosition100();
+            SnakeAndLadder.UC_5_ExactWinningPosition();
         }
     }
 }
